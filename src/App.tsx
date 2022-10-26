@@ -1,9 +1,9 @@
-import "./App.css";
+import AuthPage from "./page/AuthPage";
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className="App">
-      <p>React</p>
+      <AuthPage />
     </div>
   );
 }

@@ -1,0 +1,11 @@
+$color-dark-grey: rgb(57, 56, 56);
+
+.button {
+  margin-top: 10px;
+  height: 40px;
+  border-radius: 10px;
+  border-style: none;
+  color: white;
+  font-weight: 550;
+  background-color: $color-dark-grey;
+}
