@@ -1,4 +1,5 @@
 $display-flex: flex;
+$bg-color: linear-gradient(180deg, black, gray);
 
 .form-container {
   display: $display-flex;
@@ -18,8 +19,9 @@ $display-flex: flex;
 .section-item {
   flex-grow: 5;
   height: 100vh;
+  width: 100%;
 }
 
 .section-gradient {
-  background-image: linear-gradient(180deg, black, gray);
+  background-image: $bg-color;
 }

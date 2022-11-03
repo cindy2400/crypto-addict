@@ -1,0 +1,16 @@
+.header {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 2px 2px 1px #aaaaaa;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  h2 {
+    margin: 0;
+    padding-top: 18px;
+    padding-left: 40px;
+  }
+}
