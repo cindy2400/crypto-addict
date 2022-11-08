@@ -1,0 +1,27 @@
+.list {
+  display: flex;
+  flex-direction: row;
+  height: 70px;
+  border-radius: 10px;
+  margin: 6px;
+  justify-content: space-around;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  h3 {
+    font-weight: normal;
+  }
+  .smallSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 10%;
+  }
+  .mediumSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 20%;
+  }
+  .head {
+    font-weight: 500;
+  }
+}

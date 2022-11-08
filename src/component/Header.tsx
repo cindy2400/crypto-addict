@@ -10,7 +10,7 @@ const Header = () => {
 
   const logoutHandler = () => {
     dispatch(authActions.logout());
-    history.push("/login");
+    history.replace("/login");
   };
 
   return (

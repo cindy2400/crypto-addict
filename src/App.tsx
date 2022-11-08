@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { Redirect, Route } from "react-router-dom";
 import AuthPage from "./page/AuthPage";
+import DetailPage from "./page/DetailPage";
 import HomePage from "./page/HomePage";
 
 function App(): JSX.Element {
@@ -12,8 +13,11 @@ function App(): JSX.Element {
     <div>
       {isLogin ? (
         <>
-          <Route path="/home">
+          <Route path="/home" exact>
             <HomePage />
+          </Route>
+          <Route path="/home/:cryptoId">
+            <DetailPage />
           </Route>
           <Route path="/login">
             <Redirect to="/home" />
