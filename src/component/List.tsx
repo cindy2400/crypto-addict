@@ -15,7 +15,7 @@ const List: React.FC<{
       <h3 className={Styles.smallSection}>{props.name}</h3>
       <h3 className={Styles.mediumSection}>{props.supply}</h3>
       <h3 className={Styles.mediumSection}>{props.marketCapUSD}</h3>
-      <h3 className={Styles.mediumSection}>{props.priceUSD}</h3>
+      <h3 className={Styles.smallSection}>{props.priceUSD}</h3>
       <h3 className={Styles.mediumSection}>{props.changePercent24Hr}</h3>
     </div>
   );

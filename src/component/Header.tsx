@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { authActions } from "../store/auth/auth-slice";
 import Button from "./Button";
 import Styles from "./Header.module.scss";
@@ -16,7 +16,10 @@ const Header = () => {
   return (
     <div className={Styles.header}>
       <h2>Crypto Addict</h2>
-      <Button type="button" text="Logout" onClickHandler={logoutHandler} />
+      <div>
+        <Link to="/favorite">Favorite</Link>
+        <Button type="button" text="Logout" onClickHandler={logoutHandler} />
+      </div>
     </div>
   );
 };

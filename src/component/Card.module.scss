@@ -1,4 +1,5 @@
-$bg-color: linear-gradient(180deg, rgb(94, 94, 94), black);
+// $bg-color: linear-gradient(180deg, rgb(94, 94, 94), black);
+$bg-color: white;
 
 @mixin cardSize($width: 330px, $height: 450px) {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);

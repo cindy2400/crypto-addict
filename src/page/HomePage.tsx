@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import Header from "../component/Header";
 import List from "../component/List";
 import {
@@ -8,11 +9,11 @@ import {
   fetchWebSocketCryptoPrice,
 } from "../store/crypto/crypto-fetcher";
 import { AppDispatch, x } from "../store/store";
+import Styles from "./HomePage.module.scss";
 
 const HomePage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const cryptoList = useSelector((state: x) => state.crypto.cryptoList);
-  // const cryptoHistory = useSelector((state: x) => state.crypto.cryptoHistory);
 
   useEffect(() => {
     dispatch(fetchCryptoList());
@@ -33,14 +34,20 @@ const HomePage = () => {
       />
       {cryptoList?.map((crypto: any) => {
         return (
-          <List
-            rank={crypto.rank}
-            name={crypto.name}
-            supply={crypto.supply}
-            marketCapUSD={crypto.marketCapUsd}
-            priceUSD={Number(crypto?.priceUsd).toFixed(3)}
-            changePercent24Hr={crypto.changePercent24Hr}
-          />
+          <Link
+            key={crypto.id}
+            className={Styles.link}
+            to={`/home/${crypto.id}`}
+          >
+            <List
+              rank={crypto.rank}
+              name={crypto.name}
+              supply={crypto.supply}
+              marketCapUSD={crypto.marketCapUsd}
+              priceUSD={Number(crypto?.priceUsd).toFixed(3)}
+              changePercent24Hr={crypto.changePercent24Hr}
+            />
+          </Link>
         );
       })}
     </>

@@ -14,6 +14,20 @@ interface Crypto {
   vwap24Hr: string;
 }
 
+interface CryptoObject {
+  id?: string;
+  rank?: string;
+  symbol?: string;
+  name?: string;
+  supply?: string;
+  maxSupply?: string;
+  marketCapUsd?: string;
+  volumeUsd24Hr?: string;
+  priceUsd?: string;
+  changePercent24Hr?: string;
+  vwap24Hr?: string;
+}
+
 interface CryptoHistory {
   priceUsd: string;
   time: number;
@@ -23,11 +37,15 @@ interface CryptoHistory {
 interface CryptoState {
   cryptoList: Crypto[];
   cryptoHistory: CryptoHistory[];
+  cryptoFavorite: Crypto[];
+  cryptoDetail: CryptoObject;
 }
 
 const initialState: CryptoState = {
   cryptoList: [],
   cryptoHistory: [],
+  cryptoFavorite: [],
+  cryptoDetail: {},
 };
 
 export const cryptoSlice = createSlice({
@@ -39,6 +57,9 @@ export const cryptoSlice = createSlice({
     },
     setCryptoHistory(state, action) {
       state.cryptoHistory = action.payload;
+    },
+    setCryptoDetail(state, action) {
+      state.cryptoDetail = action.payload;
     },
     setWebSocketCryptoPrice(state, action) {
       const price = action.payload;
@@ -53,6 +74,14 @@ export const cryptoSlice = createSlice({
         }
       });
       state.cryptoList = newPrice;
+    },
+    setCryptoFavorite(state, action) {
+      state.cryptoFavorite.push(action.payload);
+    },
+    removeCryptoFavorite(state, action) {
+      state.cryptoFavorite = state.cryptoFavorite.filter(
+        (crypto) => crypto.id !== action.payload
+      );
     },
   },
 });

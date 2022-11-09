@@ -13,6 +13,20 @@ export const fetchCryptoList = () => {
   };
 };
 
+export const fetchCryptoDetail = (cryptoId: string) => {
+  return async (dispatch: any) => {
+    try {
+      const response = await axios.get(
+        `https://api.coincap.io/v2/assets/${cryptoId}`
+      );
+      const data = response.data.data;
+      dispatch(cryptoActions.setCryptoDetail(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 export const fetchCryptoHistory = () => {
   return async (dispatch: any) => {
     try {
