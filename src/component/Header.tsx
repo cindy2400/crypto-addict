@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { authActions } from "../store/auth/auth-slice";
 import Button from "./Button";
 import Styles from "./Header.module.scss";
@@ -15,11 +15,28 @@ const Header = () => {
 
   return (
     <div className={Styles.header}>
-      <h2>Crypto Addict</h2>
+      <h3>Crypto Addict</h3>
       <div>
-        <Link to="/home">Home</Link>
-        <Link to="/favorite">Favorite</Link>
-        <Button type="button" text="Logout" onClickHandler={logoutHandler} />
+        <NavLink
+          to="/home"
+          activeClassName={Styles["link-active"]}
+          className={Styles.link}
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to="/favorite"
+          activeClassName={Styles["link-active"]}
+          className={Styles.link}
+        >
+          Favorite
+        </NavLink>
+        <Button
+          type="button"
+          text="Logout"
+          classname={Styles["logout-button"]}
+          onClickHandler={logoutHandler}
+        />
       </div>
     </div>
   );

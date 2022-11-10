@@ -8,15 +8,16 @@ const List: React.FC<{
   marketCapUSD: string;
   priceUSD: string;
   changePercent24Hr: string;
+  classname: string | undefined;
 }> = (props) => {
   return (
-    <div className={Styles.list}>
-      <h3 className={Styles.smallSection}>{props.rank}</h3>
-      <h3 className={Styles.smallSection}>{props.name}</h3>
-      <h3 className={Styles.mediumSection}>{props.supply}</h3>
-      <h3 className={Styles.mediumSection}>{props.marketCapUSD}</h3>
-      <h3 className={Styles.smallSection}>{props.priceUSD}</h3>
-      <h3 className={Styles.mediumSection}>{props.changePercent24Hr}</h3>
+    <div className={`${Styles.list} ${props.classname}`}>
+      <p className={Styles.smallSection}>{props.rank}</p>
+      <p className={Styles.smallSection}>{props.name}</p>
+      <p className={Styles.mediumSection}>{props.supply}</p>
+      <p className={Styles.mediumSection}>{props.marketCapUSD}</p>
+      <p className={Styles.smallSection}>{props.priceUSD}</p>
+      <p className={Styles.mediumSection}>{props.changePercent24Hr}</p>
     </div>
   );
 };

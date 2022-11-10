@@ -41,7 +41,7 @@ const AuthPage: React.FC<{ type: string }> = (props) => {
       <div className={Style["section-item"]}>
         <div>
           <form onSubmit={onSubmitHandler} className={Style["form-container"]}>
-            <h1>{props.type === "login" ? "Sign In" : "Sign Up"}</h1>
+            <h2>{props.type === "login" ? "Sign In" : "Sign Up"}</h2>
             <Input
               type="email"
               placeholder="Email"
@@ -58,6 +58,7 @@ const AuthPage: React.FC<{ type: string }> = (props) => {
               type="submit"
               text={props.type === "login" ? "Sign In" : "Sign Up"}
               onClickHandler={undefined}
+              classname={undefined}
             />
             {props.type === "login" ? (
               <p>

@@ -40,7 +40,11 @@ const HomePage = () => {
         marketCapUSD="MarketCapUSD"
         priceUSD="Price"
         changePercent24Hr="ChangePercent24Hr"
+        classname={Styles.head}
       />
+      {crypto.length === 0 && (
+        <p className={Styles["empty-info"]}>Favorite crypto empty...</p>
+      )}
       {crypto?.map((crypto: any) => {
         return (
           <Link
@@ -55,6 +59,7 @@ const HomePage = () => {
               marketCapUSD={crypto.marketCapUsd}
               priceUSD={Number(crypto?.priceUsd).toFixed(3)}
               changePercent24Hr={crypto.changePercent24Hr}
+              classname={undefined}
             />
           </Link>
         );

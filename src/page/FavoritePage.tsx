@@ -20,6 +20,7 @@ const FavoritePage: React.FC = () => {
         marketCapUSD="MarketCapUSD"
         priceUSD="Price"
         changePercent24Hr="ChangePercent24Hr"
+        classname={undefined}
       />
       {favoriteCrypto?.map((crypto: any) => {
         return (
@@ -35,6 +36,7 @@ const FavoritePage: React.FC = () => {
               marketCapUSD={crypto.marketCapUsd}
               priceUSD={Number(crypto?.priceUsd).toFixed(3)}
               changePercent24Hr={crypto.changePercent24Hr}
+              classname={undefined}
             />
           </Link>
         );

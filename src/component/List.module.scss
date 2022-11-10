@@ -1,7 +1,7 @@
 .list {
   display: flex;
   flex-direction: row;
-  height: 70px;
+  height: 55px;
   border-radius: 10px;
   margin: 6px;
   justify-content: space-around;
@@ -20,8 +20,5 @@
     flex-direction: row;
     justify-content: center;
     width: 20%;
-  }
-  .head {
-    font-weight: 500;
   }
 }
