@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import Card from "../component/Card";
 import Header from "../component/Header";
 import { fetchCryptoDetail } from "../store/crypto/crypto-fetcher";
 import { cryptoActions } from "../store/crypto/crypto-slice";
@@ -33,8 +34,8 @@ const DetailPage = () => {
     <>
       <Header />
       <div className={Styles["content-margin"]}>
-        <div className={Styles["section"]}>
-          <p>{cryptoDetail.name}</p>
+        <div className={Styles["section-column"]}>
+          <h1>{cryptoDetail.name}</h1>
           <button
             onClick={() => {
               isFavorite
@@ -57,13 +58,13 @@ const DetailPage = () => {
             <p>abc</p>
           </Card> */}
         </div>
-        <div className={Styles["section"]}>
-          {/* <Card type="large">
-            <p>abc</p>
-          </Card>
+        <div className={Styles["section-row"]}>
           <Card type="small">
             <p>abc</p>
-          </Card> */}
+          </Card>
+          <Card type="large">
+            <p>abc</p>
+          </Card>
         </div>
       </div>
     </>

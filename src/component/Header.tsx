@@ -17,6 +17,7 @@ const Header = () => {
     <div className={Styles.header}>
       <h2>Crypto Addict</h2>
       <div>
+        <Link to="/home">Home</Link>
         <Link to="/favorite">Favorite</Link>
         <Button type="button" text="Logout" onClickHandler={logoutHandler} />
       </div>

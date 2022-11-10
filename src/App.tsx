@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { Redirect, Route, Switch } from "react-router-dom";
 import AuthPage from "./page/AuthPage";
 import DetailPage from "./page/DetailPage";
-import FavoritePage from "./page/FavoritePage";
 import HomePage from "./page/HomePage";
 
 function App(): JSX.Element {
@@ -18,7 +17,7 @@ function App(): JSX.Element {
             <HomePage />
           </Route>
           <Route path="/favorite">
-            <FavoritePage />
+            <HomePage />
           </Route>
           <Route path="/home/:cryptoId">
             <DetailPage />

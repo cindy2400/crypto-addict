@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface Crypto {
+export interface Crypto {
   id: string;
   rank: string;
   symbol: string;
@@ -74,6 +74,20 @@ export const cryptoSlice = createSlice({
         }
       });
       state.cryptoList = newPrice;
+    },
+    setWebSocketCryptoFavoritePrice(state, action) {
+      const price = action.payload;
+      const newPrice = state.cryptoFavorite.map((crypto) => {
+        if (price[crypto.id] !== undefined) {
+          return {
+            ...crypto,
+            priceUsd: price[crypto.id],
+          };
+        } else {
+          return crypto;
+        }
+      });
+      state.cryptoFavorite = newPrice;
     },
     setCryptoFavorite(state, action) {
       state.cryptoFavorite.push(action.payload);

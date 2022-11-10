@@ -50,7 +50,10 @@ export const fetchWebSocketCryptoPrice = () => {
       };
       webSocket.onmessage = (message) => {
         dispatch(
-          cryptoActions.setWebSocketCryptoPrice(JSON.parse(message.data))
+          cryptoActions.setWebSocketCryptoPrice(JSON.parse(message.data)),
+          cryptoActions.setWebSocketCryptoFavoritePrice(
+            JSON.parse(message.data)
+          )
         );
       };
     } catch (error) {

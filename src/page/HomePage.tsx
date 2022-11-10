@@ -1,25 +1,34 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Header from "../component/Header";
 import List from "../component/List";
 import {
-  fetchCryptoHistory,
   fetchCryptoList,
   fetchWebSocketCryptoPrice,
 } from "../store/crypto/crypto-fetcher";
+import { Crypto } from "../store/crypto/crypto-slice";
 import { AppDispatch, x } from "../store/store";
 import Styles from "./HomePage.module.scss";
 
 const HomePage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const cryptoList = useSelector((state: x) => state.crypto.cryptoList);
+  const cryptoFavorite = useSelector((state: x) => state.crypto.cryptoFavorite);
+  const [crypto, setCrypto] = useState<Crypto[]>([]);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     dispatch(fetchCryptoList());
     dispatch(fetchWebSocketCryptoPrice());
-    dispatch(fetchCryptoHistory());
+    // dispatch(fetchCryptoHistory());
   }, [dispatch]);
+
+  useEffect(() => {
+    pathname === "/favorite"
+      ? setCrypto(cryptoFavorite)
+      : setCrypto(cryptoList);
+  }, [cryptoFavorite, cryptoList, pathname]);
 
   return (
     <>
@@ -32,7 +41,7 @@ const HomePage = () => {
         priceUSD="Price"
         changePercent24Hr="ChangePercent24Hr"
       />
-      {cryptoList?.map((crypto: any) => {
+      {crypto?.map((crypto: any) => {
         return (
           <Link
             key={crypto.id}
