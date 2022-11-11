@@ -56,7 +56,14 @@ export const cryptoSlice = createSlice({
       state.cryptoList = action.payload;
     },
     setCryptoHistory(state, action) {
-      state.cryptoHistory = action.payload;
+      const history = action.payload;
+      const formatedDate = history.map((his: any) => {
+        return {
+          ...his,
+          date: new Date(his.date).toDateString(),
+        };
+      });
+      state.cryptoHistory = formatedDate;
     },
     setCryptoDetail(state, action) {
       state.cryptoDetail = action.payload;
@@ -96,6 +103,9 @@ export const cryptoSlice = createSlice({
       state.cryptoFavorite = state.cryptoFavorite.filter(
         (crypto) => crypto.id !== action.payload
       );
+    },
+    removeCryptoDetail(state) {
+      state.cryptoDetail = {};
     },
   },
 });

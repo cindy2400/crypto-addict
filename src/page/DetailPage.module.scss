@@ -5,15 +5,28 @@
 .section-column {
   display: flex;
   flex-direction: column;
-  // p {
-  //   color: white;
-  // }
+  margin-left: 20px;
+  h3 {
+    margin: 0;
+  }
 }
 
 .section-row {
   display: flex;
   flex-direction: row;
-  // p {
-  //   color: white;
-  // }
+}
+
+@mixin button($bgColor: rgb(160, 32, 32)) {
+  background-color: $bgColor;
+  width: fit-content;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.button-favorite {
+  @include button;
+}
+
+.button-remove {
+  @include button($bgColor: rgb(97, 101, 12));
 }

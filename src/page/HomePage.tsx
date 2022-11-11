@@ -7,7 +7,7 @@ import {
   fetchCryptoList,
   fetchWebSocketCryptoPrice,
 } from "../store/crypto/crypto-fetcher";
-import { Crypto } from "../store/crypto/crypto-slice";
+import { Crypto, cryptoActions } from "../store/crypto/crypto-slice";
 import { AppDispatch, x } from "../store/store";
 import Styles from "./HomePage.module.scss";
 
@@ -21,7 +21,6 @@ const HomePage = () => {
   useEffect(() => {
     dispatch(fetchCryptoList());
     dispatch(fetchWebSocketCryptoPrice());
-    // dispatch(fetchCryptoHistory());
   }, [dispatch]);
 
   useEffect(() => {
@@ -29,6 +28,10 @@ const HomePage = () => {
       ? setCrypto(cryptoFavorite)
       : setCrypto(cryptoList);
   }, [cryptoFavorite, cryptoList, pathname]);
+
+  const removeOldCryptoDetailHandler = () => {
+    dispatch(cryptoActions.removeCryptoDetail());
+  };
 
   return (
     <>
@@ -51,6 +54,7 @@ const HomePage = () => {
             key={crypto.id}
             className={Styles.link}
             to={`/home/${crypto.id}`}
+            onClick={removeOldCryptoDetailHandler}
           >
             <List
               rank={crypto.rank}

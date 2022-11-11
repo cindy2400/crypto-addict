@@ -27,11 +27,11 @@ export const fetchCryptoDetail = (cryptoId: string) => {
   };
 };
 
-export const fetchCryptoHistory = () => {
+export const fetchCryptoHistory = (cryptoId: string) => {
   return async (dispatch: any) => {
     try {
       const response = await axios.get(
-        "https://api.coincap.io/v2/assets/bitcoin/history?interval=d1"
+        `https://api.coincap.io/v2/assets/${cryptoId}/history?interval=d1`
       );
       const data = response.data.data;
       dispatch(cryptoActions.setCryptoHistory(data));

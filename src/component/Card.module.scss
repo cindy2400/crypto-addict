@@ -1,10 +1,10 @@
 // $bg-color: linear-gradient(180deg, rgb(94, 94, 94), black);
 $bg-color: white;
 
-@mixin cardSize($width: 330px, $height: 450px) {
+@mixin cardSize($width: 330px) {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: $width;
-  height: $height;
+  height: fit-content;
   padding: 16px;
   margin: 20px;
   border-radius: 5px;
@@ -13,12 +13,15 @@ $bg-color: white;
 
 .cardSmall {
   @include cardSize;
+  h4 {
+    margin: 0;
+  }
 }
 
 .cardMedium {
-  @include cardSize($width: 400px, $height: 150px);
+  @include cardSize($width: 400px);
 }
 
 .cardLarge {
-  @include cardSize($width: 1150px, $height: 450px);
+  @include cardSize($width: 1150px);
 }
