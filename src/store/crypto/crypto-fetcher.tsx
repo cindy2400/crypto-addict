@@ -41,6 +41,20 @@ export const fetchCryptoHistory = (cryptoId: string) => {
   };
 };
 
+export const fetchCryptoSearch = (cryptoId: string) => {
+  return async (dispatch: any) => {
+    try {
+      const response = await axios.get(
+        `https://api.coincap.io/v2/assets?search=${cryptoId}`
+      );
+      const data = response.data.data;
+      dispatch(cryptoActions.setCryptoList(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 export const fetchWebSocketCryptoPrice = () => {
   return (dispatch: any) => {
     try {

@@ -64,7 +64,7 @@ const DetailPage = () => {
           />
         </div>
         <div className={Styles["section-row"]}>
-          <Card type="small">
+          <Card>
             <>
               <h4>Rank</h4>
               <p>{cryptoDetail.rank}</p>
@@ -78,7 +78,7 @@ const DetailPage = () => {
               <p>{cryptoDetail.changePercent24Hr}</p>
             </>
           </Card>
-          <Card type="large">
+          <Card>
             <AreaChart
               width={730}
               height={250}
