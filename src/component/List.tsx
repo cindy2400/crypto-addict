@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NumericFormat } from "react-number-format";
 import Styles from "./List.module.scss";
 
 const List: React.FC<{
@@ -10,7 +11,7 @@ const List: React.FC<{
   changePercent24Hr: string;
   classname: string | undefined;
 }> = (props) => {
-  const [cryptoPrice, setCryptoPrice] = useState(0);
+  const [, setCryptoPrice] = useState(0);
   const [cryptoPriceColor, setCryptoPriceColor] = useState("black");
 
   useEffect(() => {
@@ -26,10 +27,41 @@ const List: React.FC<{
     <div className={`${Styles.list} ${props.classname}`}>
       <p className={Styles.smallSection}>{props.rank}</p>
       <p className={Styles.smallSection}>{props.name}</p>
-      <p className={Styles.mediumSection}>{props.supply}</p>
-      <p className={Styles.mediumSection}>{props.marketCapUSD}</p>
+      <p className={Styles.mediumSection}>
+        {props?.supply === "Supply" ? (
+          props.supply
+        ) : (
+          <NumericFormat
+            value={Number(props?.supply).toFixed(3)}
+            displayType={"text"}
+            thousandSeparator={true}
+            prefix={"$"}
+          />
+        )}
+      </p>
+      <p className={Styles.mediumSection}>
+        {props?.marketCapUSD === "MarketCapUSD" ? (
+          props.marketCapUSD
+        ) : (
+          <NumericFormat
+            value={Number(props?.marketCapUSD).toFixed(3)}
+            displayType={"text"}
+            thousandSeparator={true}
+            prefix={"$"}
+          />
+        )}
+      </p>
       <p className={`${Styles.smallSection} ${Styles[cryptoPriceColor]}`}>
-        {props.priceUSD}
+        {props?.priceUSD === "Price" ? (
+          props.priceUSD
+        ) : (
+          <NumericFormat
+            value={Number(props?.priceUSD).toFixed(3)}
+            displayType={"text"}
+            thousandSeparator={true}
+            prefix={"$"}
+          />
+        )}
       </p>
       <p className={Styles.mediumSection}>{props.changePercent24Hr}</p>
     </div>

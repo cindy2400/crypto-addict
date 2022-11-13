@@ -1,9 +1,15 @@
+import React from "react";
 import Styles from "./Card.module.scss";
 
-const Card: React.FC<{ children: JSX.Element }> = (props) => {
+const Card: React.FC<{
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+}> = (props) => {
   return (
     <>
-      <div className={Styles.card}>{props.children}</div>
+      <div style={props.style} className={Styles.card}>
+        {props.children}
+      </div>
     </>
   );
 };

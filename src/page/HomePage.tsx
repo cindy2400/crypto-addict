@@ -5,18 +5,21 @@ import Header from "../component/Header";
 import List from "../component/List";
 import SearchInput from "../component/SearchInput";
 import {
+  disconnectWebSocketCryptoPrice,
   fetchCryptoList,
   fetchCryptoSearch,
   fetchWebSocketCryptoPrice,
 } from "../store/crypto/crypto-fetcher";
 import { Crypto, cryptoActions } from "../store/crypto/crypto-slice";
-import { AppDispatch, x } from "../store/store";
+import { AppDispatch, storeType } from "../store/store";
 import Styles from "./HomePage.module.scss";
 
 const HomePage = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const cryptoList = useSelector((state: x) => state.crypto.cryptoList);
-  const cryptoFavorite = useSelector((state: x) => state.crypto.cryptoFavorite);
+  const cryptoList = useSelector((state: storeType) => state.crypto.cryptoList);
+  const cryptoFavorite = useSelector(
+    (state: storeType) => state.crypto.cryptoFavorite
+  );
   const [crypto, setCrypto] = useState<Crypto[]>([]);
   const [searchText, setSearchText] = useState("");
   const { pathname } = useLocation();
@@ -24,6 +27,9 @@ const HomePage = () => {
   useEffect(() => {
     dispatch(fetchCryptoList());
     dispatch(fetchWebSocketCryptoPrice());
+    return () => {
+      disconnectWebSocketCryptoPrice();
+    };
   }, [dispatch]);
 
   useEffect(() => {
@@ -87,7 +93,7 @@ const HomePage = () => {
               name={crypto.name}
               supply={crypto.supply}
               marketCapUSD={crypto.marketCapUsd}
-              priceUSD={Number(crypto?.priceUsd).toFixed(3)}
+              priceUSD={crypto.priceUsd}
               changePercent24Hr={crypto.changePercent24Hr}
               classname={undefined}
             />

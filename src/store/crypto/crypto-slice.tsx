@@ -14,38 +14,36 @@ export interface Crypto {
   vwap24Hr: string;
 }
 
-interface CryptoObject {
-  id?: string;
-  rank?: string;
-  symbol?: string;
-  name?: string;
-  supply?: string;
-  maxSupply?: string;
-  marketCapUsd?: string;
-  volumeUsd24Hr?: string;
-  priceUsd?: string;
-  changePercent24Hr?: string;
-  vwap24Hr?: string;
-}
-
 interface CryptoHistory {
   priceUsd: string;
   time: number;
-  date: Date;
+  date: string;
 }
 
 interface CryptoState {
   cryptoList: Crypto[];
   cryptoHistory: CryptoHistory[];
   cryptoFavorite: Crypto[];
-  cryptoDetail: CryptoObject;
+  cryptoDetail: Crypto;
 }
 
 const initialState: CryptoState = {
   cryptoList: [],
   cryptoHistory: [],
   cryptoFavorite: [],
-  cryptoDetail: {},
+  cryptoDetail: {
+    id: "",
+    rank: "",
+    symbol: "",
+    name: "",
+    supply: "",
+    maxSupply: "",
+    marketCapUsd: "",
+    volumeUsd24Hr: "",
+    priceUsd: "",
+    changePercent24Hr: "",
+    vwap24Hr: "",
+  },
 };
 
 export const cryptoSlice = createSlice({
@@ -67,6 +65,21 @@ export const cryptoSlice = createSlice({
     },
     setCryptoDetail(state, action) {
       state.cryptoDetail = action.payload;
+    },
+    setCryptoDetailPrice(state, action) {
+      state.cryptoDetail = {
+        ...state.cryptoDetail,
+        priceUsd: action.payload[state.cryptoDetail.id],
+      };
+      const timeStamp = Date.now();
+      state.cryptoHistory = [
+        ...state.cryptoHistory,
+        {
+          priceUsd: action.payload[state.cryptoDetail.id],
+          time: timeStamp,
+          date: new Date(timeStamp).toDateString(),
+        },
+      ];
     },
     setWebSocketCryptoPrice(state, action) {
       const price = action.payload;
@@ -105,7 +118,19 @@ export const cryptoSlice = createSlice({
       );
     },
     removeCryptoDetail(state) {
-      state.cryptoDetail = {};
+      state.cryptoDetail = {
+        id: "",
+        rank: "",
+        symbol: "",
+        name: "",
+        supply: "",
+        maxSupply: "",
+        marketCapUsd: "",
+        volumeUsd24Hr: "",
+        priceUsd: "",
+        changePercent24Hr: "",
+        vwap24Hr: "",
+      };
     },
   },
 });

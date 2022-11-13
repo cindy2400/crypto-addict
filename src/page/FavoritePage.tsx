@@ -3,11 +3,13 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Header from "../component/Header";
 import List from "../component/List";
-import { x } from "../store/store";
+import { storeType } from "../store/store";
 import Styles from "./FavoritePage.module.scss";
 
 const FavoritePage: React.FC = () => {
-  const favoriteCrypto = useSelector((state: x) => state.crypto.cryptoFavorite);
+  const favoriteCrypto = useSelector(
+    (state: storeType) => state.crypto.cryptoFavorite
+  );
 
   return (
     <>
