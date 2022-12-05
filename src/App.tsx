@@ -25,6 +25,9 @@ function App(): JSX.Element {
           <Route path="/login">
             <Redirect to="/home" />
           </Route>
+          <Route path="*" exact>
+            <p>No Route</p>
+          </Route>
         </Switch>
       ) : (
         <Switch>
@@ -39,6 +42,9 @@ function App(): JSX.Element {
           </Route>
           <Route path="/register">
             <AuthPage type="register" />
+          </Route>
+          <Route path="*" exact>
+            <Redirect to="/login" />
           </Route>
         </Switch>
       )}
