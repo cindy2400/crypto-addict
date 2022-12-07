@@ -1,3 +1,16 @@
+# Crypto Addict
+
+### This website was built using :  
+- [React JS](https://reactjs.org/)
+- [React Router](https://reactrouter.com/en/main)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [SASS](https://sass-lang.com/)
+- [Apollo GraphQl](https://www.apollographql.com/docs/react/get-started/)
+- [Reqres](https://reqres.in/) = API for authentication
+- [CoinCap Websocket](https://docs.coincap.io/) = Realtime Crypto Pricing
+- [Create React App](https://github.com/facebook/create-react-app)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
