@@ -10,6 +10,10 @@
 - [CoinCap Websocket](https://docs.coincap.io/) = Realtime Crypto Pricing
 - [Create React App](https://github.com/facebook/create-react-app)
 
+### Preview : 
+![login](./public/crypto-addict-1.PNG)
+![home](./public/crypto-addict-2.PNG)
+![detail](./public/crypto-addict-3.PNG)
 
 # Getting Started with Create React App
 
