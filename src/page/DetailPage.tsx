@@ -134,7 +134,7 @@ const DetailPage = () => {
                   </linearGradient>
                 </defs>
                 <XAxis dataKey="date" />
-                <YAxis domain={["dataMin", "dataMax"]} dataKey="priceUsd" />
+                <YAxis domain={["auto", "auto"]} dataKey="priceUsd" />
                 <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip />
                 <Area
