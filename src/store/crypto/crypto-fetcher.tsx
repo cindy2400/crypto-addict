@@ -61,9 +61,7 @@ export const fetchWebSocketCryptoPrice = () => {
   return (dispatch: any) => {
     try {
       webSocket = new WebSocket("wss://ws.coincap.io/prices?assets=ALL");
-      webSocket.onopen = () => {
-        console.log("Connected");
-      };
+      webSocket.onopen = () => {};
       webSocket.onmessage = (message) => {
         dispatch(
           cryptoActions.setWebSocketCryptoPrice(JSON.parse(message.data))
@@ -94,9 +92,7 @@ export const fetchWebSocketCryptoPriceDetailPage = (cryptoId: string) => {
       webSocket = new WebSocket(
         `wss://ws.coincap.io/prices?assets=${cryptoId}`
       );
-      webSocket.onopen = () => {
-        console.log("Connected");
-      };
+      webSocket.onopen = () => {};
       webSocket.onmessage = (message) => {
         dispatch(cryptoActions.setCryptoDetailPrice(JSON.parse(message.data)));
       };
