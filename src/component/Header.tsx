@@ -1,22 +1,13 @@
-import { useDispatch } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
-import { authActions } from "../store/auth/auth-slice";
-import Button from "./Button";
+import { Link, NavLink } from "react-router-dom";
 import Styles from "./Header.module.scss";
 
 const Header = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
-
-  const logoutHandler = () => {
-    dispatch(authActions.logout());
-    history.replace("/login");
-  };
-
   return (
     <div className={Styles.header}>
-      <h3>Crypto Addict</h3>
-      <div>
+      <Link to="/" className={Styles.title}>
+        Crypto Addict
+      </Link>
+      <div className={Styles["header-nav"]}>
         <NavLink
           to="/home"
           activeClassName={Styles["link-active"]}
@@ -31,12 +22,6 @@ const Header = () => {
         >
           Favorite
         </NavLink>
-        <Button
-          type="button"
-          text="Logout"
-          classname={Styles["logout-button"]}
-          onClickHandler={logoutHandler}
-        />
       </div>
     </div>
   );
