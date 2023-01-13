@@ -26,7 +26,7 @@ const List: React.FC<{
   return (
     <div className={`${Styles.list} ${props.classname}`}>
       <p className={Styles.smallSection}>{props.rank}</p>
-      <p className={Styles.smallSection}>{props.name}</p>
+      <p className={Styles.mediumSection}>{props.name}</p>
       <p className={Styles.mediumSection}>
         {props?.supply === "Supply" ? (
           props.supply
@@ -53,7 +53,7 @@ const List: React.FC<{
       </p>
       <p className={`${Styles.smallSection} ${Styles[cryptoPriceColor]}`}>
         {props?.priceUSD === "Price" ? (
-          props.priceUSD
+          <p>{props.priceUSD}</p>
         ) : (
           <NumericFormat
             value={Number(props?.priceUSD).toFixed(3)}
